@@ -13,3 +13,8 @@ Note: We do not recommend self hosting but here are the instructions, if you'd l
 1. Clone the repo (`git clone https://github.com/DanPlayz0/Rudolph.git`)
 2. Install the dependencies (`npm install`)
 3. Run the bot (`npm start`)
+
+## Future References
+
+- [Original Announcement](https://discord.com/channels/264445053596991498/285458046006591499/1180138774647279727)
+![Image of Announcement](https://discord.mx/BiGERyetu4.png)
