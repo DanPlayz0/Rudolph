@@ -1,0 +1,48 @@
+{
+  "dependencies": {
+    "axios": "^1.1.3",
+    "canvas": "^2.10.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "discord.js": "^14.9.0",
+    "express": "^4.18.2",
+    "klaw": "^4.0.1",
+    "module-alias": "^2.2.2"
+  },
+  "name": "rudolph",
+  "version": "1.0.0",
+  "description": "Rudolph is your go-to winter-themed companion for adding a touch of holiday spirit to your Discord server!",
+  "main": "index.js",
+  "scripts": {
+    "shard": "node index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanPlayz0/Rudolph.git"
+  },
+  "keywords": [
+    "winter",
+    "christmas",
+    "bot",
+    "discord",
+    "holiday",
+    "themed"
+  ],
+  "author": "DanPlayz0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanPlayz0/Rudolph/issues"
+  },
+  "homepage": "https://github.com/DanPlayz0/Rudolph#readme",
+  "_moduleAliases": {
+    "@root": ".",
+    "@assets": "./assets/",
+    "@website": "./website/",
+    "@commands": "./commands/",
+    "@events": "./events/",
+    "@handlers": "./handlers/",
+    "@structures": "./structures/"
+  }
+}

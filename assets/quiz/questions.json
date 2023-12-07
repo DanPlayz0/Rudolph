@@ -1,0 +1,716 @@
+[
+  {
+    "question": "It's beginning to look a lot like Christmas, everywhere you ___?",
+    "answers": [
+      {
+        "name": "go",
+        "correct": true
+      },
+      {
+        "name": "look",
+        "correct": false
+      },
+      {
+        "name": "see",
+        "correct": false
+      },
+      {
+        "name": "walk",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which song contains this line: “I don't care about the presents underneath the Christmas tree”?",
+    "answers": [
+      {
+        "name": "All I Want For Christmas Is You",
+        "correct": true
+      },
+      {
+        "name": "White Christmas",
+        "correct": false
+      },
+      {
+        "name": "Winter Wonderland",
+        "correct": false
+      },
+      {
+        "name": "Let it snow",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "In Adam Sandlers “Chanukah Song” he sings instead of one day of presents, we have",
+    "answers": [
+      {
+        "name": "8 days of food",
+        "correct": true
+      },
+      {
+        "name": "10 days of candles",
+        "correct": false
+      },
+      {
+        "name": "8 days of presents",
+        "correct": false
+      },
+      {
+        "name": "8 days of food",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What song has the lyrics “laughing all the way”?",
+    "answers": [
+      {
+        "name": "Silent night",
+        "correct": true
+      },
+      {
+        "name": "Rock around the Christmas tree",
+        "correct": false
+      },
+      {
+        "name": "Jingle Bells",
+        "correct": false
+      },
+      {
+        "name": "Deck the Halls",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which popular Christmas beverage is also called “milk punch”?",
+    "answers": [
+      {
+        "name": "Eggnog",
+        "correct": true
+      },
+      {
+        "name": "Mulled wine",
+        "correct": false
+      },
+      {
+        "name": "Hot chocolate",
+        "correct": false
+      },
+      {
+        "name": "Cider",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What did the other reindeer not let Rudolph do because of his shiny red nose?",
+    "answers": [
+      {
+        "name": "Join in any reindeer games",
+        "correct": true
+      },
+      {
+        "name": "Lead the sleigh",
+        "correct": false
+      },
+      {
+        "name": "Eat cookies",
+        "correct": false
+      },
+      {
+        "name": "Wear a Santa hat",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Elvis isn't going to have a white Christmas he's going to have a....",
+    "answers": [
+      {
+        "name": "Blue Christmas",
+        "correct": true
+      },
+      {
+        "name": "Green Christmas",
+        "correct": false
+      },
+      {
+        "name": "Red Christmas",
+        "correct": false
+      },
+      {
+        "name": "Golden Christmas",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What do people traditionally put on top of a Christmas tree?",
+    "answers": [
+      {
+        "name": "An angel",
+        "correct": true
+      },
+      {
+        "name": "Santa",
+        "correct": false
+      },
+      {
+        "name": "A bell",
+        "correct": false
+      },
+      {
+        "name": "A wreath",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "In Home Alone, where are the McCallisters going on vacation when they leave Kevin behind?",
+    "answers": [
+      {
+        "name": "Paris",
+        "correct": true
+      },
+      {
+        "name": "London",
+        "correct": false
+      },
+      {
+        "name": "Rome",
+        "correct": false
+      },
+      {
+        "name": "Tokyo",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which country did eggnog come from?",
+    "answers": [
+      {
+        "name": "England",
+        "correct": true
+      },
+      {
+        "name": "France",
+        "correct": false
+      },
+      {
+        "name": "Spain",
+        "correct": false
+      },
+      {
+        "name": "Italy",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What are you supposed to do when you find yourself under the mistletoe?",
+    "answers": [
+      {
+        "name": "Kiss",
+        "correct": true
+      },
+      {
+        "name": "Dance",
+        "correct": false
+      },
+      {
+        "name": "Juggle",
+        "correct": false
+      },
+      {
+        "name": "Recite",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which one of Santa's reindeer has the same name as another holiday mascot?",
+    "answers": [
+      {
+        "name": "Cupid",
+        "correct": true
+      },
+      {
+        "name": "Frosty",
+        "correct": false
+      },
+      {
+        "name": "Leprechaun",
+        "correct": false
+      },
+      {
+        "name": "Grinch",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which fairy tale was the first gingerbread houses inspired by?",
+    "answers": [
+      {
+        "name": "Hansel and Gretel",
+        "correct": true
+      },
+      {
+        "name": "Rapunzel",
+        "correct": false
+      },
+      {
+        "name": "Hansel",
+        "correct": false
+      },
+      {
+        "name": "Cinderella",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Where did the word and idea 'Christmukkah' come from?",
+    "answers": [
+      {
+        "name": "The O.C.",
+        "correct": true
+      },
+      {
+        "name": "Friends",
+        "correct": false
+      },
+      {
+        "name": "Seinfeld",
+        "correct": false
+      },
+      {
+        "name": "Gossip Girl",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Three of Santa's reindeer's names begin with the letter “D.” What are those names?",
+    "answers": [
+      {
+        "name": "Dancer, Dasher, and Donner",
+        "correct": true
+      },
+      {
+        "name": "Dailey, Duke, and Donner",
+        "correct": false
+      },
+      {
+        "name": "Dancer, Duke, and Deliah",
+        "correct": false
+      },
+      {
+        "name": "Dancer, Dasher, Deliah",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "In what year was the popular Christmas song 'Jingle Bells' composed?",
+    "answers": [
+      {
+        "name": "1840",
+        "correct": false
+      },
+      {
+        "name": "1857",
+        "correct": true
+      },
+      {
+        "name": "1901",
+        "correct": false
+      },
+      {
+        "name": "1776",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What country is credited with the tradition of placing presents in socks or stockings?",
+    "answers": [
+      {
+        "name": "Germany",
+        "correct": false
+      },
+      {
+        "name": "Italy",
+        "correct": false
+      },
+      {
+        "name": "France",
+        "correct": false
+      },
+      {
+        "name": "Netherlands",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Which popular Christmas plant is known for its red and green leaves?",
+    "answers": [
+      {
+        "name": "Mistletoe",
+        "correct": false
+      },
+      {
+        "name": "Holly",
+        "correct": true
+      },
+      {
+        "name": "Poinsettia",
+        "correct": false
+      },
+      {
+        "name": "Christmas Cactus",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the name of the famous ballet often performed during the holiday season?",
+    "answers": [
+      {
+        "name": "Swan Lake",
+        "correct": false
+      },
+      {
+        "name": "The Nutcracker",
+        "correct": true
+      },
+      {
+        "name": "Cinderella",
+        "correct": false
+      },
+      {
+        "name": "Romeo and Juliet",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which country is credited with the tradition of the Christmas tree?",
+    "answers": [
+      {
+        "name": "United States",
+        "correct": false
+      },
+      {
+        "name": "England",
+        "correct": false
+      },
+      {
+        "name": "Germany",
+        "correct": true
+      },
+      {
+        "name": "Sweden",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "In the song 'Frosty the Snowman', what made Frosty come to life?",
+    "answers": [
+      {
+        "name": "A magical hat",
+        "correct": true
+      },
+      {
+        "name": "A scarf",
+        "correct": false
+      },
+      {
+        "name": "A carrot",
+        "correct": false
+      },
+      {
+        "name": "A button",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which figure from Charles Dickens' 'A Christmas Carol' said, 'Bah, humbug!'?",
+    "answers": [
+      {
+        "name": "Ebenezer Scrooge",
+        "correct": true
+      },
+      {
+        "name": "Bob Cratchit",
+        "correct": false
+      },
+      {
+        "name": "Jacob Marley",
+        "correct": false
+      },
+      {
+        "name": "Tiny Tim",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the name of the reindeer that leads Santa's sleigh?",
+    "answers": [
+      {
+        "name": "Blitzen",
+        "correct": false
+      },
+      {
+        "name": "Dasher",
+        "correct": false
+      },
+      {
+        "name": "Rudolph",
+        "correct": true
+      },
+      {
+        "name": "Comet",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which Christmas song begins with the lyrics 'Chestnuts roasting on an open fire'?",
+    "answers": [
+      {
+        "name": "White Christmas",
+        "correct": false
+      },
+      {
+        "name": "The Christmas Song (Chestnuts Roasting on an Open Fire)",
+        "correct": true
+      },
+      {
+        "name": "Jingle Bells",
+        "correct": false
+      },
+      {
+        "name": "Santa Claus Is Coming to Town",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the process by which ice turns directly into vapor without melting called?",
+    "answers": [
+      {
+        "name": "Evaporation",
+        "correct": false
+      },
+      {
+        "name": "Sublimation",
+        "correct": true
+      },
+      {
+        "name": "Condensation",
+        "correct": false
+      },
+      {
+        "name": "Freezing",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the record low temperature ever recorded on Earth?",
+    "answers": [
+      {
+        "name": "-128.6°F (-89.2°C)",
+        "correct": true
+      },
+      {
+        "name": "-100°F (-73.3°C)",
+        "correct": false
+      },
+      {
+        "name": "-150°F (-101.1°C)",
+        "correct": false
+      },
+      {
+        "name": "-90°F (-67.8°C)",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What type of precipitation is common during freezing temperatures and is formed by tiny ice crystals?",
+    "answers": [
+      {
+        "name": "Hail",
+        "correct": false
+      },
+      {
+        "name": "Sleet",
+        "correct": false
+      },
+      {
+        "name": "Snow",
+        "correct": true
+      },
+      {
+        "name": "Graupel",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the name for a period of prolonged abnormally low temperatures in the winter?",
+    "answers": [
+      {
+        "name": "Cold snap",
+        "correct": true
+      },
+      {
+        "name": "Heatwave",
+        "correct": false
+      },
+      {
+        "name": "Frostwave",
+        "correct": false
+      },
+      {
+        "name": "Ice storm",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which phenomenon occurs when water vapor freezes directly into ice crystals on surfaces?",
+    "answers": [
+      {
+        "name": "Frost",
+        "correct": true
+      },
+      {
+        "name": "Dew",
+        "correct": false
+      },
+      {
+        "name": "Fog",
+        "correct": false
+      },
+      {
+        "name": "Condensation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which country is credited with the tradition of decorating Christmas trees?",
+    "answers": [
+      {
+        "name": "Germany",
+        "correct": true
+      },
+      {
+        "name": "France",
+        "correct": false
+      },
+      {
+        "name": "Italy",
+        "correct": false
+      },
+      {
+        "name": "Spain",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the name of the festival celebrated by Hindus, Sikhs, and Jains that involves lighting oil lamps or candles?",
+    "answers": [
+      {
+        "name": "Diwali",
+        "correct": true
+      },
+      {
+        "name": "Eid",
+        "correct": false
+      },
+      {
+        "name": "Hanukkah",
+        "correct": false
+      },
+      {
+        "name": "Kwanzaa",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the traditional Japanese New Year's food, consisting of long noodles?",
+    "answers": [
+      {
+        "name": "Toshikoshi soba",
+        "correct": true
+      },
+      {
+        "name": "Udon",
+        "correct": false
+      },
+      {
+        "name": "Ramen",
+        "correct": false
+      },
+      {
+        "name": "Sushi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "What is the Jewish Festival of Lights?",
+    "answers": [
+      {
+        "name": "Hanukkah",
+        "correct": true
+      },
+      {
+        "name": "Purim",
+        "correct": false
+      },
+      {
+        "name": "Rosh Hashanah",
+        "correct": false
+      },
+      {
+        "name": "Yom Kippur",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Which country is credited with the creation of the tradition of sending Christmas cards?",
+    "answers": [
+      {
+        "name": "United Kingdom",
+        "correct": true
+      },
+      {
+        "name": "United States",
+        "correct": false
+      },
+      {
+        "name": "Canada",
+        "correct": false
+      },
+      {
+        "name": "Australia",
+        "correct": false
+      }
+    ]
+  }
+]
