@@ -25,5 +25,6 @@ module.exports = class BotClient extends Discord.Client {
     this.loader = new (require('./Loader.js'))(this);
 
     this.loader.start();
+    this.database.init();
   }
 }
