@@ -4,15 +4,15 @@ module.exports = class DatabaseManager {
     this.config = config;
     this.raw = null;
     this.db = null;
-    this.isDisabled = this.config.mongodb_uri == null;
+    this.isDisabled = this.config.mongo_uri == null;
   }
 
   async init() {
     if (this.isDisabled) return;
-    if (!this.config.mongodb_uri) throw Error('Missing Mongo URI');
-    this.raw = await MongoClient.connect(this.config.mongodb_uri, {}).catch(err => (console.error(err), null));
+    if (!this.config.mongo_uri) throw Error('Missing Mongo URI');
+    this.raw = await MongoClient.connect(this.config.mongo_uri, {}).catch(err => (console.error(err), null));
     if (!this.raw) throw Error('Mongo URI Failed');
-    const urlTokens = /\w\/([^?]*)/g.exec(this.config.mongodb_uri)
+    const urlTokens = /\w\/([^?]*)/g.exec(this.config.mongo_uri)
     if (!urlTokens) throw Error('Missing Table Name');
     this.db = this.raw.db(urlTokens && urlTokens[1]);
     return true;
