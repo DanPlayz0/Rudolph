@@ -1,4 +1,8 @@
 const Event = require('@structures/framework/Event');
+const cron = require('node-schedule');
+const moment = require('moment');const { time } = require('discord.js');
+ require('moment-timezone');
+
 module.exports = class extends Event {
   constructor(client) {
     super(client, {
@@ -25,5 +29,57 @@ module.exports = class extends Event {
     
     // if(client.guilds.cache.has('783178035322159156')) client.guilds.cache.get('783178035322159156').commands.set(client.commands.map(m=>m.commandData))
     // client.application.commands.set(client.commands.map(m=>m.commandData));
+
+    cron.scheduleJob('0 * * * *', async function() {
+      let timeInZone = {};
+      const christmasCountdowns = await client.database.find('countdowns', {"christmas.enabled": true});
+
+      for (let countdown of christmasCountdowns) {
+        if (timeInZone[countdown.christmas.timezone] && timeInZone[countdown.christmas.timezone] != '12:00 am') continue;
+        
+        let guild = client.guilds.cache.get(countdown.guildId);
+        if (!guild) continue;
+        let channel = guild.channels.cache.get(countdown.christmas.channel_id);
+        if (!channel) continue;
+
+        let zoneTime = moment.tz(countdown.christmas.timezone);
+        if (!timeInZone[countdown.christmas.timezone]) timeInZone[countdown.christmas.timezone] = zoneTime.format('hh:mm a');
+        if (timeInZone[countdown.christmas.timezone] != '12:00 am') continue;
+
+        let christmas = moment.tz([zoneTime.year(),11,25,0,0,0], countdown.christmas.timezone);
+        let diffChrist = christmas.diff(zoneTime, 'days');
+        if (diffChrist <= 0) {
+          await client.database.update('countdowns', {id: countdown.id}, {$set: {"christmas.enabled": false}});
+          channel.send(`🎄 **Christmas** was **${diffChrist}** days ago! Disabling countdown, enable it again next year! (You can start it as early as the first of January)`);
+          continue;
+        }
+
+        channel.send(`🎄 **Christmas** is **${diffChrist}** days away!`);
+      }
+
+      const newYearsCountdowns = await client.database.find('countdowns', {"new_years.enabled": true});
+      for (let countdown of newYearsCountdowns) {
+        if (timeInZone[countdown.new_years.timezone] && timeInZone[countdown.new_years.timezone] != '12:00 am') continue;
+        
+        let guild = client.guilds.cache.get(countdown.guildId);
+        if (!guild) continue;
+        let channel = guild.channels.cache.get(countdown.new_years.channel_id);
+        if (!channel) continue;
+
+        let zoneTime = moment.tz(countdown.new_years.timezone);
+        if (!timeInZone[countdown.new_years.timezone]) timeInZone[countdown.new_years.timezone] = zoneTime.format('hh:mm a');
+        if (timeInZone[countdown.new_years.timezone] != '12:00 am') continue;
+
+        let newYears = moment.tz([zoneTime.year()+1,0,1,0,0,0], countdown.new_years.timezone);
+        let diffYears = newYears.diff(zoneTime, 'days');
+        if (diffYears <= 0) {
+          await client.database.update('countdowns', {id: countdown.id}, {$set: {"new_years.enabled": false}});
+          channel.send(`🎉 **New Years** was **${diffYears}** days ago! Disabling countdown, enable it again next year! (You can start it as early as the first of January)`);
+          continue;
+        }
+
+        channel.send(`🎉 **New Years** is **${diffYears}** days away!`);
+      }
+    });
   }
 }
