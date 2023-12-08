@@ -6,52 +6,12 @@ module.exports = class extends Command {
     super(client, {
       enabled: true,
       description: 'Play a winter themed quiz!',
-      options: [
-        { 
-          type: 3,
-          name: "show_intro",
-          description: "Should the instructions prompt show?",
-          choices: [
-            {name: "Yes", value: "show"},
-            {name: "No (Bypass)", value: "bypass"},
-          ]
-        }
-      ],
+      options: [],
       category: "Winter",
     })
   }
 
   async run(ctx) {
-    if(ctx.args.getString('show_intro') == "bypass") return this.startGame(ctx);
-    const msg = await ctx.sendMsg({
-      embeds: [new ctx.EmbedBuilder()
-        .setTitle("Quiz your Winter Knowledge!")
-        .setDescription("Press the button below to start. This message will be edited with a question, and you will have 5 minutes to answer it.")
-        .setThumbnail("https://discord.mx/Y1tWS1bCZr.png")
-        .setColor('#88C9F9')],
-      components: [{ type:1, components: [ { type:2, style:3, label: "Start", custom_id: "quiz_start" } ] }] 
-    });
-
-    const collector = msg.createMessageComponentCollector({
-      filter: (inter) =>
-        inter.user.id === ctx.interaction.user.id &&
-        inter.customId == "quiz_start",
-      time: 120_000,
-      max: 1,
-    });
-
-    collector.on("end", (collected) => {
-      if (collected.size) return;
-      msg.edit({ components: [{ type:1, components: [ { type:2, style:3, label: "Start", custom_id: "quiz_start", disabled: true } ] }] });
-    });
-
-    collector.on("collect", (interaction) => {
-      interaction.deferUpdate();
-      this.startGame(ctx);
-    });  
-  }
-
-  async startGame(ctx) {
     const randomQuestion = quizQuestions[Math.floor(Math.random() * quizQuestions.length)];
 
     let options = [...randomQuestion.answers], correctAnswer = null;
