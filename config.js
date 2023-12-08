@@ -4,6 +4,9 @@ module.exports = {
 
   // Bot Administators (Access to Admin Dash & System Commands)
   admins: ['209796601357533184'],
+
+  // Database Crap (MongoDB)
+  mongo_uri: process.env.MONGODB_URI,
   
   // RESTful API
   restapi: {
