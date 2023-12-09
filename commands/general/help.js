@@ -3,7 +3,7 @@ module.exports = class extends Command {
   constructor(client) {
     super(client, {
       enabled: true,
-      description: 'Get a list of commands.',
+      description: 'Get a list of commands. (Rudolph)',
       options: [
         {
           // Full list of valid types
@@ -23,15 +23,13 @@ module.exports = class extends Command {
     const embed = new ctx.MessageEmbed().setColor('#36a3f9');
       
     if (ctx.args.getString('command')) return this.commandInfo(ctx, ctx.args.getString('command'), embed);
-    
+
+    const categories = [...new Set(ctx.client.commands.map(m => m.conf.category))].sort((a,b) => a.localeCompare(b));
     embed
       .setAuthor({ name: ctx.client.user.username, iconURL: ctx.client.user.displayAvatarURL({ dynamic: true, format: 'png' }) })
       .setDescription(`You can do \`${ctx.prefix}help [command]\` for more info on a command.`)
-      .setFields([
-        { name: '➤ General', value: ctx.client.commands.filter(m => m.conf.category == "General").map(m => `\`${m.commandData.name}\``).join(' ') || 'None', inline: false },
-        { name: '➤ Winter', value: ctx.client.commands.filter(m => m.conf.category == "Winter").map(m => `\`${m.commandData.name}\``).join(' ') || 'None', inline: false },
-        { name: '➤ Christmas', value: ctx.client.commands.filter(m => m.conf.category == "Christmas").map(m => `\`${m.commandData.name}\``).join(' ') || 'None', inline: false }
-      ])
+      .setFields(categories.map(m => ({ name: `➤ ${m}`, value: ctx.client.commands.filter(x => x.conf.category == m).map(x => `\`${x.commandData.name}\``).join(' ') || 'None', inline: false })))
+      .setFooter({text: "Made for top.gg winter hackathon 2023"})
     ctx.sendMsg(embed)
   }
   async commandInfo(ctx, command, embed) {
