@@ -11,6 +11,31 @@ const cookieTypes = {
       color: { r: 152, g: 90, b: 67 },
     }
   },
+  "rainbow-chip": {
+    name: "Rainbow Chip",
+    emoji: { id: "1182159607376912394", name: "cookie_mixed" },
+    startColor: { r: 246, g: 159, b: 106 },
+    topping: {
+      type: "circle",
+      color: [
+        { r: 255, g: 0, b: 0 },
+        { r: 255, g: 255, b: 0 },
+        { r: 0, g: 255, b: 0 },
+        { r: 0, g: 0, b: 255 },
+        { r: 255, g: 0, b: 255 },
+        { r: 255, g: 255, b: 255 },
+      ],
+    }
+  },
+  "white-chocolate-chip": {
+    name: "White Chocolate Chip",
+    emoji: { id: "1182159607376912394", name: "cookie_mixed" },
+    startColor: { r: 228, g: 194, b: 126 },
+    topping: {
+      type: "circle",
+      color: { r: 238, g: 217, b: 160 },
+    }
+  },
 }
 
 let cookieMasks = {
@@ -18,6 +43,9 @@ let cookieMasks = {
   "gingerbread_man": "https://discord.mx/okqoWXUbqC.png",
   "candy_cane": "https://discord.mx/ioucGpKJCP.png",
   "snowflake": "https://discord.mx/3bhPch1huS.png",
+  "snowman": "https://discord.mx/twltiPt7Qg.png",
+  "pac_man": "https://discord.mx/3HOZemCqDR.png",
+  "house": "https://discord.mx/hMqPAWmNOD.png",
 };
 
 (async () => {
@@ -27,12 +55,28 @@ let cookieMasks = {
 })();
 
 
-const generateCanvas = (color, chipColor, chips = []) => {
+const generateCanvas = (color, chipColor, chips = [], chipDarken = 0) => {
   const canvas = Canvas.createCanvas(500,500), context = canvas.getContext('2d');
   const [centerX, centerY] = [canvas.width / 2, canvas.height / 2];
   const radius = centerX * 0.9;
   const numberOfChips = 20;
   const chipRadius = radius / numberOfChips * 0.8;
+
+  function getColor() {
+    let returnedColor = chipColor;
+    if (Array.isArray(chipColor)) returnedColor = chipColor[Math.floor(Math.random() * chipColor.length)];
+    return returnedColor;
+  }
+
+  function colorRGBToStr(color) {
+    if (typeof color == "string") return color;
+    return `rgb(${color.r}, ${color.g}, ${color.b})`;
+  }
+
+  function colorDarken(color, darken) {
+    if (typeof color == "string") return color;
+    return `rgb(${Math.floor(color.r * (1 - darken))}, ${Math.floor(color.g * (1 - darken))}, ${Math.floor(color.b * (1 - darken))})`;
+  }
 
   context.beginPath();
   context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
@@ -64,15 +108,19 @@ const generateCanvas = (color, chipColor, chips = []) => {
         context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
         context.clip();
 
+        const color = getColor();
+        let showColor = colorRGBToStr(color);
+        if (chipDarken > 0 && chipDarken <= 1) showColor = `rgb(${Math.floor(color.r * (1 - chipDarken))}, ${Math.floor(color.g * (1 - chipDarken))}, ${Math.floor(color.b * (1 - chipDarken))})`;
+
         context.beginPath();
         context.arc(chipX, chipY, chipRadius, 0, 2 * Math.PI);
-        context.fillStyle = chipColor;
+        context.fillStyle = showColor;
         context.fill();
         context.closePath();
 
         context.restore();
 
-        chips.push({ x: chipX, y: chipY });
+        chips.push({ x: chipX, y: chipY, color });
         chipsDrawn++;
       }
     }
@@ -86,7 +134,7 @@ const generateCanvas = (color, chipColor, chips = []) => {
 
     context.beginPath();
     context.arc(chips[i].x, chips[i].y, chipRadius, 0, 2 * Math.PI);
-    context.fillStyle = chipColor;
+    context.fillStyle = colorRGBToStr(colorDarken(chips[i].color, chipDarken));
     context.fill();
     context.closePath();
 
@@ -110,6 +158,21 @@ function createCookieShape({ canvas, context }, shape) {
   ctx2.globalCompositeOperation = 'source-over';
 
   return {canvas: c2, context:ctx2};
+}
+
+function generateComponents (values) {
+  const row = (ri) => Math.ceil(values.length / 5) === 1 ? values.length 
+    : (Math.ceil(values.length / 5) === ri + 1) ? values.length - (Math.ceil(values.length / 5) - 1) * 5 : 5;
+  let itemId = -1;
+
+
+  return Array.from({ length: Math.ceil(values.length / 5) }, (_, ri) => ({
+    type: 1,
+    components: Array.from({ length: row(ri) }, (_, i) => {
+      itemId++;
+      return values[itemId];
+    })
+  }))
 }
 
 module.exports = class extends Command {
@@ -145,6 +208,7 @@ module.exports = class extends Command {
               type: 2,
               style: 1,
               label: cookieObj.name,
+              emoji: cookieObj.emoji,
               custom_id: `cookiemaker_select_${id}`,
             }
           })
@@ -174,7 +238,7 @@ module.exports = class extends Command {
         if(cookieTypes[type].topping.type) {
           regenerate = (resetToppings = false) => {
             if (resetToppings) gameData.toppings = [];
-            genned = generateCanvas(`rgb(${cookieTypes[gameData.type].startColor.r}, ${cookieTypes[gameData.type].startColor.g}, ${cookieTypes[gameData.type].startColor.b})`, `rgb(${cookieTypes[gameData.type].topping.color.r}, ${cookieTypes[gameData.type].topping.color.g}, ${cookieTypes[gameData.type].topping.color.b})`, gameData.toppings);
+            genned = generateCanvas(`rgb(${cookieTypes[gameData.type].startColor.r}, ${cookieTypes[gameData.type].startColor.g}, ${cookieTypes[gameData.type].startColor.b})`, cookieTypes[gameData.type].topping.color, gameData.toppings);
             canvas = genned.canvas.toBuffer();
             return canvas;
           };
@@ -200,7 +264,7 @@ module.exports = class extends Command {
               .setImage('attachment://cookie.png')
               .setColor('#88C9F9')],
             files: [{ attachment: canvas || "https://discord.mx/hcvOiDRmYc.jpg", name: "cookie.png" }],
-            components: [{ type:1, components: Object.keys(cookieMasks).map(m => ({ type:2, style:1, label: m.split('_').join(' ').toProperCase(), custom_id: `cookiemaker_shape_${m}` }))}] 
+            components: generateComponents(Object.keys(cookieMasks).map(m => ({ type:2, style:1, label: m.split('_').join(' ').toProperCase(), custom_id: `cookiemaker_shape_${m}` }))) 
           });
         } else {
           regenerate(true);
@@ -218,7 +282,7 @@ module.exports = class extends Command {
         gameData.shape = type;
         regenerate = (resetToppings = false) => {
           if (resetToppings) gameData.toppings = [];
-          genned = generateCanvas(`rgb(${cookieTypes[gameData.type].startColor.r}, ${cookieTypes[gameData.type].startColor.g}, ${cookieTypes[gameData.type].startColor.b})`, `rgb(${cookieTypes[gameData.type].topping.color.r}, ${cookieTypes[gameData.type].topping.color.g}, ${cookieTypes[gameData.type].topping.color.b})`, gameData.toppings);
+          genned = generateCanvas(`rgb(${cookieTypes[gameData.type].startColor.r}, ${cookieTypes[gameData.type].startColor.g}, ${cookieTypes[gameData.type].startColor.b})`, cookieTypes[gameData.type].topping.color, gameData.toppings);
           genned = createCookieShape(genned, gameData.shape);
           canvas = genned.canvas.toBuffer();
           return canvas;
@@ -273,10 +337,10 @@ module.exports = class extends Command {
     });
     
     collector.on("end", async (collected) => {
-      if (gameData.type == null) return msg.edit({ embeds: [new ctx.EmbedBuilder().setTitle("Cookie Maker").setDescription("You ran out of time to select a cookie type!").setColor('#88C9F9')] });
-      if (gameData.mixed == null) return msg.edit({ embeds: [new ctx.EmbedBuilder().setTitle("Cookie Maker").setDescription("You ran out of time to mix the dough!").setColor('#88C9F9')] });
-      if (gameData.shape == null) return msg.edit({ embeds: [new ctx.EmbedBuilder().setTitle("Cookie Maker").setDescription("You ran out of time to shape the dough!").setColor('#88C9F9')] });
-      if (gameData.bake == null) return msg.edit({ embeds: [new ctx.EmbedBuilder().setTitle("Cookie Maker").setDescription("You ran out of time to bake the dough!").setColor('#88C9F9')] });
+      if (gameData.type == null) return msg.edit({ embeds: [new ctx.EmbedBuilder().setTitle("Cookie Maker").setDescription("You ran out of time to select a cookie type!").setColor('#88C9F9')], components: [] });
+      if (gameData.mixed == null) return msg.edit({ embeds: [new ctx.EmbedBuilder().setTitle("Cookie Maker").setDescription("You ran out of time to mix the dough!").setImage('attachment://cookie.png').setColor('#88C9F9')], components: [] });
+      if (gameData.shape == null) return msg.edit({ embeds: [new ctx.EmbedBuilder().setTitle("Cookie Maker").setDescription("You ran out of time to shape the dough!").setImage('attachment://cookie.png').setColor('#88C9F9')], components: [] });
+      if (gameData.bake == null) return msg.edit({ embeds: [new ctx.EmbedBuilder().setTitle("Cookie Maker").setDescription("You ran out of time to bake the dough!").setImage('attachment://cookie.png').setColor('#88C9F9')], components: [] });
 
       const bakeTime = Date.now() - gameData.bake;
       const bakeTimePercentage = Math.min(bakeTime / 10000, 1);
@@ -287,9 +351,8 @@ module.exports = class extends Command {
       }
 
       const color = darken(cookieTypes[gameData.type].startColor.r, cookieTypes[gameData.type].startColor.g, cookieTypes[gameData.type].startColor.b);
-      const chipColor = darken(cookieTypes[gameData.type].topping.color.r, cookieTypes[gameData.type].topping.color.g, cookieTypes[gameData.type].topping.color.b)
 
-      genned = generateCanvas(color, chipColor, gameData.toppings);
+      genned = generateCanvas(color, cookieTypes[gameData.type].topping.color, gameData.toppings, bakeTimePercentage*darkenPercentage);
       genned = createCookieShape(genned, gameData.shape);
       canvas = genned.canvas.toBuffer();
 
