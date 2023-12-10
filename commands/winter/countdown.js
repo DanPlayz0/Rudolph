@@ -84,6 +84,7 @@ module.exports = class extends Command {
   }
 
   async run(ctx) {
+    if (!ctx.member.permissions.has('ManageGuild') && ctx.args._subcommand != 'view') return ctx.sendMsg('You must have the `Manage Server` permission to use this command.');
     let guildSettings = await ctx.database.findOne('countdowns', { guildId: ctx.guild.id });
     if(!guildSettings) {
       if (ctx.args._subcommand == 'view') return ctx.sendMsg('There are no countdowns setup for this server.');
