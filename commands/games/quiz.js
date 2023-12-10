@@ -46,7 +46,7 @@ module.exports = class extends Command {
           new ctx.EmbedBuilder()
             .setTitle('Quiz your Winter Knowledge!')
             .setColor('#88C9F9')
-            .setThumbnail("https://discord.mx/Y1tWS1bCZr.png")
+            .setThumbnail("https://discord.mx/7dMiqILngf.png")
             .setDescription("You ran out of time.")
         ],
         components: []
@@ -62,7 +62,7 @@ module.exports = class extends Command {
           new ctx.EmbedBuilder()
             .setTitle('Quiz your Winter Knowledge!')
             .setColor('#88C9F9')
-            .setThumbnail("https://discord.mx/Y1tWS1bCZr.png")
+            .setThumbnail("https://discord.mx/7dMiqILngf.png")
             .setDescription(`**Question:** ${randomQuestion.question}\n\n**Choices:**\n~~---------~~\n${options.map((x,i) => `**#${i+1}** ${x.name}`).join('\n')}\n\nYou choose answer **#${answer}** ${answer == correctAnswer ? "and that was **correct**! 🎉" : `but the correct answer was **#${correctAnswer}**. 😦`}`)
         ],
         components: [],
