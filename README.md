@@ -18,3 +18,6 @@ Note: We do not recommend self hosting but here are the instructions, if you'd l
 
 - [Original Announcement](https://discord.com/channels/264445053596991498/285458046006591499/1180138774647279727)
 ![Image of Announcement](https://discord.mx/BiGERyetu4.png)
+
+- [Results](https://discord.com/channels/264445053596991498/285458046006591499/1184170996773699705)
+![Image of Results](https://discord.mx/VSVCL1yXj8.png)
