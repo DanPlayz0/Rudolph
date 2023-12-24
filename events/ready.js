@@ -78,7 +78,7 @@ module.exports = class extends Event {
           continue;
         }
 
-        channel.send(`🎉 **New Years** is **${diffYears}** day${diffChrist==1 ? '' : 's'} away!`);
+        channel.send(`🎉 **New Years** is **${diffYears}** day${diffYears==1 ? '' : 's'} away!`);
       }
     });
   }
