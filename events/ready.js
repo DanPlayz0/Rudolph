@@ -50,7 +50,7 @@ module.exports = class extends Event {
         let diffChrist = christmas.diff(zoneTime, 'days');
         if (diffChrist <= 0) {
           await client.database.update('countdowns', {id: countdown.id}, {$set: {"christmas.enabled": false}});
-          channel.send(`🎄 **Christmas** was **${diffChrist}** days ago! Disabling countdown, enable it again next year! (You can start it as early as the first of January)`);
+          channel.send(`🎄 **Christmas** was **${diffChrist}** days ago! Disabling countdown, enable it again next year! (You can start it again as early as the first of January)`);
           continue;
         }
 
@@ -74,7 +74,7 @@ module.exports = class extends Event {
         let diffYears = newYears.diff(zoneTime, 'days');
         if (diffYears <= 0) {
           await client.database.update('countdowns', {id: countdown.id}, {$set: {"new_years.enabled": false}});
-          channel.send(`🎉 **New Years** was **${diffYears}** days ago! Disabling countdown, enable it again next year! (You can start it as early as the first of January)`);
+          channel.send(`🎉 **New Years** was **${diffYears}** days ago! Disabling countdown, enable it again next year! (You can start it again, just run the setup command again)`);
           continue;
         }
 
