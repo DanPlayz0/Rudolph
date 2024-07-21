@@ -3,7 +3,7 @@ const Event = require('@structures/framework/Event');
 module.exports = class extends Event {
   constructor(client) {
     super(client, {
-      name: 'guildDelete',
+      name: 'guildUpdate',
       enabled: true,
     });
   }

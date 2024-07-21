@@ -47,14 +47,14 @@ module.exports = class extends Event {
         if (timeInZone[countdown.christmas.timezone] != '12:00 am') continue;
 
         let christmas = moment.tz([zoneTime.year(),11,25,0,0,0], countdown.christmas.timezone);
-        let diffChrist = christmas.diff(zoneTime, 'days');
+        let diffChrist = christmas.diff(zoneTime, 'days')+1;
         if (diffChrist <= 0) {
-          await client.database.update('countdowns', {id: countdown.id}, {$set: {"christmas.enabled": false}});
-          channel.send(`🎄 **Christmas** was **${diffChrist}** days ago! Disabling countdown, enable it again next year! (You can start it again as early as the first of January)`);
+          await client.database.updateOne('countdowns', {guildId: countdown.guildId}, {$set: {"christmas.enabled": false}});
+          channel.send(`🎄 **Christmas** ${diffChrist ? 'is **TODAY**' : `was **${diffChrist}** days ago`}! Disabling countdown, enable it again next year! (You can re-start it as early as the first of January)`);
           continue;
         }
 
-        channel.send(`🎄 **Christmas** is **${diffChrist}** days away!`);
+        channel.send(`🎄 **Christmas** is **${diffChrist}** day${diffChrist==1 ? '' : 's'} away!`);
       }
 
       const newYearsCountdowns = await client.database.find('countdowns', {"new_years.enabled": true});
@@ -71,14 +71,14 @@ module.exports = class extends Event {
         if (timeInZone[countdown.new_years.timezone] != '12:00 am') continue;
 
         let newYears = moment.tz([zoneTime.year()+1,0,1,0,0,0], countdown.new_years.timezone);
-        let diffYears = newYears.diff(zoneTime, 'days');
+        let diffYears = newYears.diff(zoneTime, 'days')+1;
         if (diffYears <= 0) {
-          await client.database.update('countdowns', {id: countdown.id}, {$set: {"new_years.enabled": false}});
-          channel.send(`🎉 **New Years** was **${diffYears}** days ago! Disabling countdown, enable it again next year! (You can start it again, just run the setup command again)`);
+          await client.database.updateOne('countdowns', {guildId: countdown.guildId}, {$set: {"new_years.enabled": false}});
+          channel.send(`🎉 **New Years** ${diffYears ? 'is **TODAY**' : `was **${diffYears}** days ago`}! Disabling countdown, enable it again next year! (You can re-start it as early as now)`);
           continue;
         }
 
-        channel.send(`🎉 **New Years** is **${diffYears}** days away!`);
+        channel.send(`🎉 **New Years** is **${diffYears}** day${diffYears==1 ? '' : 's'} away!`);
       }
     });
   }
