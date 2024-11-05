@@ -11,7 +11,7 @@ module.exports = {
   
   // RESTful API
   restapi: {
-    port: 3000
+    port: parseInt(process.env.API_PORT || "3000")
   },
 
   // Bot Logging (Webhooks)
