@@ -73,7 +73,8 @@ module.exports = class extends Command {
           },
         ],
       });
-    } catch {
+    } catch (err) {
+      console.error("Greeting card", err);
       return ctx.sendMsg("Invalid image.");
     }
   }
